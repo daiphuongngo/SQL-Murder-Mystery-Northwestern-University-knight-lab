@@ -4,7 +4,10 @@
 
 ### Tables:
 
-- crime_scene_report: | date | type	| description	| city |
+- crime_scene_report: 
+
+| date | type	| description	| city |
+|-|-|-|-|
 
 - person: | id | name	| license_id	| address_number	| address_street_name	| ssn |
 
