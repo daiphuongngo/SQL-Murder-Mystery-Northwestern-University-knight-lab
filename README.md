@@ -78,48 +78,56 @@ Experienced SQL users can often use database queries to infer the structure of a
 ![Run this query to find the structure of the `crime_scene_report` table](https://user-images.githubusercontent.com/70437668/138573029-a984ea06-ce40-4262-941a-d2855ed84331.jpg)
 
 --crime_scene_report
+
 SELECT *
 FROM crime_scene_report
 
 ![crime_scene_report   ](https://user-images.githubusercontent.com/70437668/138573058-e1ca05b5-5323-4bb2-b06a-94e05f5589ee.jpg)
 
 --person
+
 SELECT *
 FROM person
 
 ![person](https://user-images.githubusercontent.com/70437668/138573104-3f30298b-52ae-465e-aa4b-e38f134e92b0.jpg)
 
 --drivers_license
+
 SELECT *
 FROM drivers_license
 
 ![drivers_license ](https://user-images.githubusercontent.com/70437668/138573145-a6584934-3292-43bb-9012-7afcf39b0a18.jpg)
 
 --facebook_event_checkin
+
 SELECT *
 FROM facebook_event_checkin
 
 ![facebook_event_checkin](https://user-images.githubusercontent.com/70437668/138573181-1674ddb1-8e68-4ae2-8c2c-c0b15ec38dfe.jpg)
 
 --interview
+
 SELECT *
 FROM interview
 
 ![interview](https://user-images.githubusercontent.com/70437668/138573198-f852aa77-95dd-4d39-90ea-9dbc7d92921e.jpg)
 
 --get_fit_now_member
+
 SELECT *
 FROM get_fit_now_member
 
 ![get_fit_now_member](https://user-images.githubusercontent.com/70437668/138573253-64cc4949-80a6-47fc-8a47-b09439d4ead7.jpg)
 
 --get_fit_now_check_in
+
 SELECT *
 FROM get_fit_now_check_in
 
 ![get_fit_now_check_in](https://user-images.githubusercontent.com/70437668/138573275-c1837c29-04d7-428b-a9a6-d7de35a3fc6c.jpg)
 
 --income
+
 SELECT *
 FROM income
 
