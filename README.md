@@ -135,3 +135,32 @@ FROM income
 
 --solution (no data)
 
+##### Level 2: Deeper Exploratory Data Analysis
+
+Select all important fields and Join all necessary tables based on the Schema Diagram
+
+![Select all important fields and Join all necessary tables based on the Schema Diagram](https://user-images.githubusercontent.com/70437668/138573395-e2a93b51-2086-49ab-bcaa-fb019903a90b.jpg)
+
+Let's see all crime types on Jan 15th, 2018:
+
+![Let's see all crime types](https://user-images.githubusercontent.com/70437668/138573446-66e67950-c78a-4274-831f-a9afd93b851c.jpg)
+
+As the question is to find the murderer, I can look for this person according to the 'murder' type.
+
+![20180115](https://user-images.githubusercontent.com/70437668/138573581-0abb793c-7d22-4313-8b14-fbd9a050d803.jpg)
+
+##### Level 3: Final queries
+
+Now I will add some key verbs of a murder in the description such as "kill", "stab", "shot" and group the results by person's name:
+
+![Final queries p1](https://user-images.githubusercontent.com/70437668/138573656-83fea926-6eb7-4959-92cd-f6752ae3ed7b.jpg)
+
+![Final queries p2](https://user-images.githubusercontent.com/70437668/138573658-a68b5933-40df-4efb-adc2-f402394f9a7f.jpg)
+
+It can be seen easily that there are only 2 suspects left. Then I will read their description and transcript to understand what they had said. After reading them, I can identify the murderer as Jeremy Bowers due to:
+
+- The decscriptions of both Jeremy Bowers and Annabel Miller: "Mama, I killed a man, put a gun against his head..."
+- Annabel Miller's transcript can be distinguished as an observer, not a murderer: "I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th."
+- Jeremy Bowers's transcript can be determined as the exact killer: "I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017."
+
+![Final queries p3](https://user-images.githubusercontent.com/70437668/138573772-68e193d5-e676-4d8d-ad90-e913118a2760.jpg)
