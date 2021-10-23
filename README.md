@@ -44,4 +44,12 @@
 | ssn	| annual_income | 
 |-|-|
 
-- solution: no data
+- solution: (no data)
+
+| user | value |
+|-|-|
+
+### Schema Diagram:
+
+![SQL Murder Mystery](https://user-images.githubusercontent.com/70437668/138572561-4c78a23b-7ab6-470e-ba2f-75b1dcca59f5.jpeg)
+
