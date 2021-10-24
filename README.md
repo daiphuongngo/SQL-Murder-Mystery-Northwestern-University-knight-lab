@@ -190,6 +190,7 @@ It can be seen easily that there are only 2 suspects left. Then I will read thei
 - Jeremy Bowers's transcript can be determined as the exact killer: "I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017."
 
 | id | name | gender | car_make | car_model | hair_color | height | ssn | 
+|-|-|-|-|-|-|-|-|
 | 67318 | Jeremy Bowers | male | Chevrolet | Spark LS | brown | 70 | 871539279 |
 
 ##### Check the result:
@@ -237,4 +238,5 @@ WHERE drivers_license.gender LIKE "Female"
 Then, I can determine that the real villain behind this murder is "Miranda Priestly".
 
 | id | name | gender | car_make | car_model | hair_color | height | ssn | event_name |  
+|-|-|-|-|-|-|-|-|-|  
 | 99716 | Miranda Priestly | Female | Tesla | Model S | red | 66 | 987756388 | SQL Symphony Concert | 
