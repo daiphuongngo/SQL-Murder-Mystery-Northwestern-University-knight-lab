@@ -154,7 +154,11 @@ As the question is to find the murderer, I can look for this person according to
 Now I will add some key verbs of a murder in the description such as "kill", "stab", "shot" and group the results by person's name:
 
 ```
-SELECT person.id, person.name, person.address_number, person.address_street_name, person.ssn, facebook_event_checkin.date, crime_scene_report.type, crime_scene_report.description, crime_scene_report.city, interview.transcript, drivers_license.age, drivers_license.height, drivers_license.eye_color, drivers_license.hair_color, drivers_license.gender, drivers_license.plate_number, drivers_license.car_make, drivers_license.car_model 
+SELECT person.id, person.name, person.address_number, person.address_street_name, 
+person.ssn, facebook_event_checkin.date, crime_scene_report.type, crime_scene_report.description, 
+crime_scene_report.city, interview.transcript, drivers_license.age, drivers_license.height, 
+drivers_license.eye_color, drivers_license.hair_color, drivers_license.gender, 
+drivers_license.plate_number, drivers_license.car_make, drivers_license.car_model 
 FROM person
 INNER JOIN facebook_event_checkin
 ON facebook_event_checkin.person_id = person.id
@@ -185,6 +189,9 @@ It can be seen easily that there are only 2 suspects left. Then I will read thei
 - Annabel Miller's transcript can be distinguished as an observer, not a murderer: "I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th."
 - Jeremy Bowers's transcript can be determined as the exact killer: "I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017."
 
+| id | name | gender | car_make | car_model | hair_color | height | ssn | 
+| 67318 | Jeremy Bowers | male | Chevrolet | Spark LS | brown | 70 | 871539279 |
+
 ##### Check the result:
 
 ![Final queries p3](https://user-images.githubusercontent.com/70437668/138573772-68e193d5-e676-4d8d-ad90-e913118a2760.jpg)
@@ -195,7 +202,11 @@ After applying the details from Jeremy Bowers's transcript to the WHERE conditio
 
 ```
 SELECT person.id, person.name, income.annual_income, facebook_event_checkin.event_name, 
-person.address_number, person.address_street_name, person.ssn, facebook_event_checkin.date, crime_scene_report.type, crime_scene_report.description, crime_scene_report.city, interview.transcript, drivers_license.age, drivers_license.height, drivers_license.eye_color, drivers_license.hair_color, drivers_license.gender, drivers_license.plate_number, drivers_license.car_make, drivers_license.car_model 
+person.address_number, person.address_street_name, person.ssn, facebook_event_checkin.date, 
+crime_scene_report.type, crime_scene_report.description, crime_scene_report.city, 
+interview.transcript, drivers_license.age, drivers_license.height, drivers_license.eye_color, 
+drivers_license.hair_color, drivers_license.gender, drivers_license.plate_number, 
+drivers_license.car_make, drivers_license.car_model 
 FROM person
 LEFT JOIN facebook_event_checkin
 ON facebook_event_checkin.person_id = person.id
@@ -216,5 +227,14 @@ WHERE drivers_license.gender LIKE "Female"
 	AND drivers_license.car_model LIKE "Model S"
 	AND drivers_license.hair_color LIKE "red"
 	AND (drivers_license.height >= 60 AND drivers_license.height <= 70)
-	AND facebook_event_checkin.event_name = 'SQL Symphony Concert' 
+	AND facebook_event_checkin.event_name = "SQL Symphony Concert" 
+	AND facebook_event_checkin.date LIKE "201712%"
 ```
+![Lv 4 p1](https://user-images.githubusercontent.com/70437668/138577494-7d82ff70-45bc-46ce-91f8-f490b83522eb.jpg)
+
+![Lv 4 p2](https://user-images.githubusercontent.com/70437668/138577495-3683f182-4dcf-460e-badb-c77b8a0bca02.jpg)
+
+Then, I can determine that the real villain behind this murder is "Miranda Priestly".
+
+| id | name | gender | car_make | car_model | hair_color | height | ssn | event_name |  
+| 99716 | Miranda Priestly | Female | Tesla | Model S | red | 66 | 987756388 | SQL Symphony Concert | 
