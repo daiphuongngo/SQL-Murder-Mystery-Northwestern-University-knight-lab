@@ -149,10 +149,32 @@ As the question is to find the murderer, I can look for this person according to
 
 ![20180115](https://user-images.githubusercontent.com/70437668/138573581-0abb793c-7d22-4313-8b14-fbd9a050d803.jpg)
 
-##### Level 3: Final queries
+##### Level 3: Identify the murderer
 
 Now I will add some key verbs of a murder in the description such as "kill", "stab", "shot" and group the results by person's name:
 
+```
+SELECT person.id, person.name, person.address_number, person.address_street_name, person.ssn, facebook_event_checkin.date, crime_scene_report.type, crime_scene_report.description, crime_scene_report.city, interview.transcript, drivers_license.age, drivers_license.height, drivers_license.eye_color, drivers_license.hair_color, drivers_license.gender, drivers_license.plate_number, drivers_license.car_make, drivers_license.car_model 
+FROM person
+INNER JOIN facebook_event_checkin
+ON facebook_event_checkin.person_id = person.id
+INNER JOIN crime_scene_report
+ON facebook_event_checkin.date = crime_scene_report.date
+INNER JOIN get_fit_now_member
+ON get_fit_now_member.person_id = person.id
+INNER JOIN get_fit_now_check_in
+ON get_fit_now_check_in.membership_id = get_fit_now_member.id
+INNER JOIN interview
+ON interview.person_id = person.id
+INNER JOIN drivers_license
+ON drivers_license.id = person.license_id
+WHERE type = "murder" 
+	AND crime_scene_report.date = 20180115
+	AND crime_scene_report.description LIKE '%kill%'
+   OR crime_scene_report.description LIKE '%shot%'
+   OR crime_scene_report.description LIKE '%stab%'
+GROUP BY person.name 
+```
 ![Final queries p1](https://user-images.githubusercontent.com/70437668/138573656-83fea926-6eb7-4959-92cd-f6752ae3ed7b.jpg)
 
 ![Final queries p2](https://user-images.githubusercontent.com/70437668/138573658-a68b5933-40df-4efb-adc2-f402394f9a7f.jpg)
@@ -166,3 +188,33 @@ It can be seen easily that there are only 2 suspects left. Then I will read thei
 ##### Check the result:
 
 ![Final queries p3](https://user-images.githubusercontent.com/70437668/138573772-68e193d5-e676-4d8d-ad90-e913118a2760.jpg)
+
+##### Level 4: Find the killing planner
+
+After applying the details from Jeremy Bowers's transcript to the WHERE conditions, there was no results appearing on the screen. The reason for this could be INNER JOIN that caused an amount of data lost. So, I will use LEFT JOIN instead with 'person' table as the parent table.
+
+```
+SELECT person.id, person.name, income.annual_income, facebook_event_checkin.event_name, 
+person.address_number, person.address_street_name, person.ssn, facebook_event_checkin.date, crime_scene_report.type, crime_scene_report.description, crime_scene_report.city, interview.transcript, drivers_license.age, drivers_license.height, drivers_license.eye_color, drivers_license.hair_color, drivers_license.gender, drivers_license.plate_number, drivers_license.car_make, drivers_license.car_model 
+FROM person
+LEFT JOIN facebook_event_checkin
+ON facebook_event_checkin.person_id = person.id
+LEFT JOIN crime_scene_report
+ON facebook_event_checkin.date = crime_scene_report.date
+LEFT JOIN get_fit_now_member
+ON get_fit_now_member.person_id = person.id
+LEFT JOIN get_fit_now_check_in
+ON get_fit_now_check_in.membership_id = get_fit_now_member.id
+LEFT JOIN interview
+ON interview.person_id = person.id
+LEFT JOIN drivers_license
+ON drivers_license.id = person.license_id
+LEFT JOIN income
+ON person.ssn = income.ssn
+WHERE drivers_license.gender LIKE "Female"
+	AND drivers_license.car_make LIKE "Tesla"
+	AND drivers_license.car_model LIKE "Model S"
+	AND drivers_license.hair_color LIKE "red"
+	AND (drivers_license.height >= 60 AND drivers_license.height <= 70)
+	AND facebook_event_checkin.event_name = 'SQL Symphony Concert' 
+```
