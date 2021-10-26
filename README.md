@@ -22,6 +22,10 @@ A crime has taken place and the detective needs your help. The detective gave yo
 
 Experienced SQL users can often use database queries to infer the structure of a database. But each database system has different ways of managing this information. The SQL Murder Mystery is built using SQLite. Use this SQL command to find the tables in the Murder Mystery database.
 
+### Target:
+
+Finding out the extract murder and killing planner with the shortest-possible SQL queries.
+
 ### Language: SQL
 
 ### Tables:
