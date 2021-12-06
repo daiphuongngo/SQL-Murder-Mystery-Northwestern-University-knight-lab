@@ -334,6 +334,7 @@ WHERE INSTR(plate_number, 'H42W') > 0 AND gender = 'male'
 Here's the same result as the 1st approach:
 
 | person_id | name | plate_number | gender |
+|-|-|-|-|
 | 67318 | Jeremy Bowers | 0H42W2 | male |
 
 #### Murder Planner
@@ -374,6 +375,7 @@ INNER JOIN symphony_attenders ON rich_suspects.person_id = symphony_attenders.pe
 ```
 
 | name | annual_income | 
+|-|-|
 | Miranda Priestly | 310000 | 
 
 ```
