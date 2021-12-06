@@ -79,7 +79,7 @@ Finding out the extract murder and killing planner with the shortest-possible SQ
 
 ![SQL Murder Mystery](https://user-images.githubusercontent.com/70437668/138572561-4c78a23b-7ab6-470e-ba2f-75b1dcca59f5.jpeg)
 
-## SQL Queries:
+## SQL Queries: (2 approaches)
 
 ### 1st approach: Naive approach
 
