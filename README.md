@@ -79,7 +79,9 @@ Finding out the extract murder and killing planner with the shortest-possible SQ
 
 ![SQL Murder Mystery](https://user-images.githubusercontent.com/70437668/138572561-4c78a23b-7ab6-470e-ba2f-75b1dcca59f5.jpeg)
 
-### SQL Queries:
+## SQL Queries:
+
+### 1st approach: Naive approach
 
 #### Level 1: Exploring the datasets
 
@@ -263,3 +265,16 @@ Then, I can determine that the real villain behind this murder is "Miranda Pries
 | id | name | gender | car_make | car_model | hair_color | height | ssn | event_name |  
 |-|-|-|-|-|-|-|-|-|  
 | 99716 | Miranda Priestly | Female | Tesla | Model S | red | 66 | 987756388 | SQL Symphony Concert | 
+
+### 2nd approach: More efficient, advanced approach
+
+Going back to the original SQL sleuths, I will find out the witnesses.
+
+"A crime has taken place and the detective needs your help. The detective gave you the crime scene report, but you somehow lost it. You vaguely remember that the crime was a ​murder​ that occurred sometime on ​Jan.15, 2018​ and that it took place in ​SQL City​. Start by retrieving the corresponding crime scene report from the police department’s database."
+
+#### Witnesses
+
+```
+SELECT description FROM crime_scene_report
+WHERE date = '20180115' AND type = 'murder' AND city = 'SQL City'
+```
