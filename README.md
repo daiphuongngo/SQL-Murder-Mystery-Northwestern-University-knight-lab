@@ -1,6 +1,6 @@
 # SQL-Murder-Mystery-Northwestern-University-knight-lab
 
-### Category: 
+## Category: 
 
 - Crime
 
@@ -10,25 +10,25 @@
 
 - Security
 
-### Overview:
+## Overview:
 
 "There's been a Murder in SQL City! The SQL Murder Mystery is designed to be both a self-directed lesson to learn SQL concepts and commands and a fun game for experienced SQL users to solve an intriguing crime."
 
-### Experienced SQL sleuths start here:
+## Experienced SQL sleuths start here:
 
 A crime has taken place and the detective needs your help. The detective gave you the crime scene report, but you somehow lost it. You vaguely remember that the crime was a ​murder​ that occurred sometime on ​Jan.15, 2018​ and that it took place in ​SQL City​. Start by retrieving the corresponding crime scene report from the police department’s database.
 
-### Exploring the Database Structure:
+## Exploring the Database Structure:
 
 Experienced SQL users can often use database queries to infer the structure of a database. But each database system has different ways of managing this information. The SQL Murder Mystery is built using SQLite. Use this SQL command to find the tables in the Murder Mystery database.
 
-### Target:
+## Target:
 
 Finding out the extract murder and killing planner with the shortest-possible SQL queries.
 
-### Language: SQL
+## Language: SQL
 
-### Tables:
+## Tables:
 
 - crime_scene_report: 
 
@@ -75,7 +75,7 @@ Finding out the extract murder and killing planner with the shortest-possible SQ
 | user | value |
 |-|-|
 
-### Schema Diagram:
+## Schema Diagram:
 
 ![SQL Murder Mystery](https://user-images.githubusercontent.com/70437668/138572561-4c78a23b-7ab6-470e-ba2f-75b1dcca59f5.jpeg)
 
@@ -83,13 +83,13 @@ Finding out the extract murder and killing planner with the shortest-possible SQ
 
 ### 1st approach: Naive approach
 
-#### Level 1: Exploring the datasets
+### Level 1: Exploring the datasets
 
-##### Run this query to find the names of the tables in this database
+#### Run this query to find the names of the tables in this database
 
 ![Run this query to find the names of the tables in this database](https://user-images.githubusercontent.com/70437668/138573000-1f1a03c8-4e78-40a4-b310-0dfd0cc025b3.jpg)
 
-##### Run this query to find the structure of the `crime_scene_report` table
+#### Run this query to find the structure of the `crime_scene_report` table
 
 ![Run this query to find the structure of the `crime_scene_report` table](https://user-images.githubusercontent.com/70437668/138573029-a984ea06-ce40-4262-941a-d2855ed84331.jpg)
 
@@ -160,7 +160,7 @@ FROM income
 ```
 --solution (no data)
 ```
-##### Level 2: Deeper Exploratory Data Analysis
+### Level 2: Deeper Exploratory Data Analysis
 
 Select all important fields and Join all necessary tables based on the Schema Diagram
 
@@ -174,7 +174,7 @@ As the question is to find the murderer, I can look for this person according to
 
 ![20180115](https://user-images.githubusercontent.com/70437668/138573581-0abb793c-7d22-4313-8b14-fbd9a050d803.jpg)
 
-##### Level 3: Identify the murderer
+### Level 3: Identify the murderer
 
 Now I will add some key verbs of a murder in the description such as "kill", "stab", "shot" and group the results by person's name:
 
@@ -218,11 +218,11 @@ It can be seen easily that there are only 2 suspects left. Then I will read thei
 |-|-|-|-|-|-|-|-|
 | 67318 | Jeremy Bowers | male | Chevrolet | Spark LS | brown | 70 | 871539279 |
 
-##### Check the result:
+### Check the result:
 
 ![Final queries p3](https://user-images.githubusercontent.com/70437668/138573772-68e193d5-e676-4d8d-ad90-e913118a2760.jpg)
 
-##### Level 4: Find the killing planner
+### Level 4: Find the killing planner
 
 After applying the details from Jeremy Bowers's transcript to the WHERE conditions, there was no results appearing on the screen. The reason for this could be INNER JOIN that caused an amount of data lost. So, I will use LEFT JOIN instead with 'person' table as the parent table.
 
@@ -266,7 +266,7 @@ Then, I can determine that the real villain behind this murder is "Miranda Pries
 |-|-|-|-|-|-|-|-|-|  
 | 99716 | Miranda Priestly | Female | Tesla | Model S | red | 66 | 987756388 | SQL Symphony Concert | 
 
-### 2nd approach: More efficient, advanced approach
+## 2nd approach: More efficient, advanced approach
 
 Going back to the original SQL sleuths, I will find out the witnesses.
 `
@@ -275,7 +275,7 @@ Going back to the original SQL sleuths, I will find out the witnesses.
 
 Here I will use WITH sub-queries to seperate witness 1 and 2 into the witness group. 
 
-#### Witnesses
+### Witnesses
 
 ```
 SELECT description FROM crime_scene_report
@@ -303,17 +303,17 @@ SELECT witness, transcript FROM witnesses
 LEFT JOIN interview ON witnesses.id = interview.person_id
 ```
 
-#### 1st Witness 
+### 1st Witness 
 `
 I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.
 `
 
-#### 2nd Witness 
+### 2nd Witness 
 `
 I heard a gunshot and then saw a man run out. He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags. The man got into a car with a plate that included "H42W".
 `
 
-#### Suspect(s)
+### Suspect(s)
 ```
 WITH gym_checkins AS (
     SELECT person_id, name
@@ -339,7 +339,7 @@ Here's the same result as the 1st approach:
 |-|-|-|-|
 | 67318 | Jeremy Bowers | 0H42W2 | male |
 
-#### Murder Planner
+### Murder Planner
 
 I will see how the killer talked about in the script:
 ```
@@ -394,7 +394,7 @@ INSERT INTO solution VALUES (1, "Miranda Priestly");
 SELECT value FROM solution;
 ```
 
-#### Final Result
+### Final Result
 `
 Congrats, you found the brains behind the murder! Everyone in SQL City hails you as the greatest SQL detective of all time. Time to break out the champagne!
 `
