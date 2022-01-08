@@ -26,7 +26,9 @@ Experienced SQL users can often use database queries to infer the structure of a
 
 Finding out the extract murder and killing planner with the shortest-possible SQL queries.
 
-## Language: SQL
+## Language: 
+
+- SQL
 
 ## Tables:
 
